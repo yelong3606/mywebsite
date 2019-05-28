@@ -11,18 +11,22 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 // admin
-// Route::get('/admin/login', '');
-// Route::get('/admin/logout', '');
-Route::get('/admin/dashboard', 'Admin\DashboardController@index');
-Route::get('/admin/orders', 'Admin\OrdersController@index');
-// Route::get('/admin/settings', '');
-// Route::get('/admin/categories', 'Admin\CategoriesController@index');
-// Route::get('/admin/products', 'Admin\ProductsController@index');
+Route::namespace('Admin')->group(function() {
+	// Route::get('/admin/login', '');
+	// Route::get('/admin/logout', '');
+	Route::get('/admin/dashboard', 'DashboardController@index');
+	Route::get('/admin/orders', 'OrdersController@index');
+	// Route::get('/admin/settings', '');
+	Route::resource('/admin/categories', 'CategoriesController');
+	// Route::get('/admin/products', 'ProductsController@index');
+});
+
 
 // // customer
 // Route::get('/customer/login', '');

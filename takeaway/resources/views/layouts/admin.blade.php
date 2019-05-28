@@ -35,10 +35,10 @@
 		          		Dropdown
 		        	</a>
 		        	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		          		<a class="dropdown-item" href="#">Settings</a>
+		          		<a class="dropdown-item" href="/admin/settings">Settings</a>
 		          		<div class="dropdown-divider"></div>
-		          		<a class="dropdown-item" href="#">Categories</a>
-		          		<a class="dropdown-item" href="#">Products</a>
+		          		<a class="dropdown-item" href="/admin/categories">Categories</a>
+		          		<a class="dropdown-item" href="/admin/products">Products</a>
 		        	</div>
 		      	</li>
 		      	<li class="nav-item text-nowrap ml-auto">
@@ -60,13 +60,13 @@
 				        	<a class="nav-link" href="/admin/orders"><i data-feather="shopping-cart"></i>Orders</a>
 				      	</li>
 				      	<li class="nav-item">
-				        	<a class="nav-link" href="/admin/"><i data-feather="settings"></i>Settings</a>
+				        	<a class="nav-link" href="/admin/settings"><i data-feather="settings"></i>Settings</a>
 				      	</li>
 				      	<li class="nav-item">
-				        	<a class="nav-link" href="/admin/"><i data-feather="folder"></i>Categories</a>
+				        	<a class="nav-link" href="/admin/categories"><i data-feather="folder"></i>Categories</a>
 				      	</li>
 				      	<li class="nav-item">
-				        	<a class="nav-link" href="/admin/"><i data-feather="file"></i>Products</a>
+				        	<a class="nav-link" href="/admin/products"><i data-feather="file"></i>Products</a>
 				      	</li>
 					</ul>
 				</div>
