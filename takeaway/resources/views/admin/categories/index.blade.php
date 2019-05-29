@@ -10,15 +10,13 @@
 				<caption>List of Categories, sorted by "Display Order"</caption>
 				<thead class="thead-dark">
 				<tr>
-					<!-- <th>#</th> -->
 					<th>Category Name</th>
 					<th>Display Order</th>
 				</tr>
 				</thead>
 				@foreach($categories as $category)
 				<tr>
-					<!-- <td>{{$category->id}}</td> -->
-					<td>{{$category->category_name}}</td>
+					<td><a href="/admin/categories/{{$category->id}}">{{{$category->category_name}}}</a></td>
 					<td>{{$category->category_order}}</td>
 				</tr>
 				@endforeach
@@ -28,4 +26,8 @@
 		<p>No Categories Found</p>
 	@endif
 
+@endsection
+
+@section('main-button-group')
+	<a href="/admin/categories/create" class="btn btn-sm btn-outline-secondary"><i data-feather="plus"></i> Create Category</a>
 @endsection

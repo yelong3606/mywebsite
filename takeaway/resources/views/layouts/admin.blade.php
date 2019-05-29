@@ -73,15 +73,17 @@
 			</nav>
 
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+				@include('inc.messages')
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        			<h1 class="h2">@yield('main-title')</h1>
+					<h1 class="h2">@yield('main-title')</h1>
         			<div class="btn-toolbar mb-2 mb-md-0">
-          				<div class="btn-group mr-2">
-          					@yield('main-button-group')
-            				<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            				<button type="button" class="btn btn-sm btn-outline-secondary">Export</button> -->
+        				@yield('main-button-group')
+          				<!-- <div class="btn-group mr-2">
+            				<button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            				<button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
           				</div>
-          				<!-- <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle"></button> -->
+
+          				<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle"></button> -->
         			</div>
       			</div>
 				@yield('main-content')

@@ -24,10 +24,12 @@ class Controller extends BaseController
     function __construct()
     {
     	// todo: domain get method
-    	$domain = $_SERVER['SERVER_NAME'];
-    	$this->shop = Shop::where('shop_domain', $domain)->first();
-    	if ($this->shop === null) {
-    		abort(404);
-    	}
+        if (isset($_SERVER['SERVER_NAME'])) {
+            $domain = $_SERVER['SERVER_NAME'];
+            $this->shop = Shop::where('shop_domain', $domain)->first();
+            if ($this->shop === null) {
+                abort(404);
+            }
+            }
     }
 }
