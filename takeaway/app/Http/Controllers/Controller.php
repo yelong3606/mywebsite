@@ -6,30 +6,29 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use App\Shop;
+use Illuminate\Http\Request;
 
+/**
+ * base controller of all shop app controller
+ */
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
-     * instance of shop
-     * @var App\Shop;
+     * current shop object
+     * @var \App\Shop;
      */
     protected $shop;
 
     /**
      * constructor
+     * init current shop object, must be called in subclass's constructor
+     * @param \Illuminate\Http\Request $request
      */
-    function __construct()
+    public function __construct(Request $request)
     {
-    	// todo: domain get method
-        if (isset($_SERVER['SERVER_NAME'])) {
-            $domain = $_SERVER['SERVER_NAME'];
-            $this->shop = Shop::where('shop_domain', $domain)->first();
-            if ($this->shop === null) {
-                abort(404);
-            }
-            }
+        $domain = str_replace(['http://', 'https://'], '', $request->root());
+        $this->shop = \App\Shop::where('shop_domain', $domain)->first() ?: abort(404);
     }
 }

@@ -11,12 +11,19 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * user_type: shop_user, shop_admin, site_admin
+     */
+    const UT_SHOP_USER = 'shop_user'; // via register
+    const UT_SHOP_ADMIN = 'shop_admin'; // via site admin app
+    const UT_SITE_ADMIN = 'site_admin'; // via db
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'user_type', 'shop_id'
     ];
 
     /**
