@@ -16,6 +16,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/summernote-bs4.css') }}" rel="stylesheet">
 </head>
 <body>
 
@@ -102,10 +103,22 @@
 
 	<!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-<!--     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="{{ asset('js/summernote-bs4.min.js') }}"></script>
     <script>
-        CKEDITOR.replace( 'article-ckeditor' );
-    </script> -->
+    	$(document).ready(function() {
+		  	$('#summernote').summernote({
+				toolbar: [
+			    	// [groupName, [list of button]]
+				    ['style', ['bold', 'italic', 'underline', 'clear']],
+				    // ['font', ['strikethrough', 'superscript', 'subscript']],
+				    ['fontsize', ['fontsize']],
+				    ['color', ['color']],
+				    ['para', ['ul', 'ol', 'paragraph']],
+				    // ['height', ['height']]
+			  	]
+			});
+		});
+    </script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
   		feather.replace();

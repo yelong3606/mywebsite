@@ -30,7 +30,6 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
         return view('admin.categories.create');
     }
 
@@ -65,6 +64,7 @@ class CategoriesController extends Controller
         $category = new Category();
         $category->shop_id = $this->shop->id;
         $category->category_name = $request->input('category_name');
+        $category->category_desc = $request->input('category_desc');
         $category->category_order = $request->input('category_order');
         $category->save();
 
@@ -139,6 +139,7 @@ class CategoriesController extends Controller
 
         // save
         $category->category_name = $request->input('category_name');
+        $category->category_desc = $request->input('category_desc');
         $category->category_order = $request->input('category_order');
         $category->save();
 

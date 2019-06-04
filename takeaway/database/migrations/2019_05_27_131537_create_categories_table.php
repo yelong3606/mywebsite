@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
 
             $table->unsignedBigInteger('shop_id')->index();
             $table->string('category_name');
+            $table->text('category_desc');
             $table->unsignedTinyInteger('category_order')->default(0);
 
             $table->timestamps();
