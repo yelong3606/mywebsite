@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $shop->shop_name }}</title>
+    <title>{{ config('app.name', 'Takeaway') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,7 +20,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top p-0 shadow">
-		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url('/admin/dashboard') }}">{{ $shop->shop_name }}</a>
+		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url('/admin/dashboard') }}">{{ config('app.name', 'Takeout') }}</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -49,7 +49,7 @@
 		      	</li>
 		      	<li class="nav-item text-nowrap">
 		      		<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-		      		<form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+		      		<form id="logout-form" action="{{ route('manage.logout') }}" method="POST" style="display: none;">
                     	@csrf
                     </form>
 		      	</li>

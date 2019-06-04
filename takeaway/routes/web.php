@@ -11,19 +11,21 @@
 |
 */
 
-
+/**
+ * shop:
+ */	
 Route::get('/', function () {
     return view('welcome');
 });
 
-// admin
+// shop_admin
 Route::namespace('Admin')->group(function() {
 	// Route::get('/admin/login', '');
 	// Route::get('/admin/logout', '');
-	Route::get('/admin/dashboard', 'DashboardController@index');
-	Route::get('/admin/orders', 'OrdersController@index');
+	Route::get('/admin/dashboard', 'DashboardController@index')->middleware('auth:admin');
+	Route::get('/admin/orders', 'OrdersController@index')->middleware('auth:admin');
 	// Route::get('/admin/settings', '');
-	Route::resource('/admin/categories', 'CategoriesController');
+	Route::resource('/admin/categories', 'CategoriesController')->middleware('auth:admin');
 	// Route::get('/admin/products', 'ProductsController@index');
 });
 
@@ -40,3 +42,23 @@ Route::namespace('Admin')->group(function() {
 // // flow
 // Route::get('/flow/shop', '');
 
+
+Auth::routes();
+
+Route::get('/admin/login', 'Auth\Admin\LoginController@showLoginForm')->name('admin.login');
+Route::post('/admin/login', 'Auth\Admin\LoginController@login');
+Route::post('/admin/logout', 'Auth\Admin\LoginController@logout')->name('admin.logout');
+
+Route::get('/manage/login', 'Auth\Manage\LoginController@showLoginForm')->name('manage.login');
+Route::post('/manage/login', 'Auth\Manage\LoginController@login');
+Route::post('/manage/logout', 'Auth\Manage\LoginController@logout')->name('manage.logout');
+
+// shop_user
+Route::namespace('User')->group(function() {
+	Route::get('/user/dashboard', 'DashboardController@index')->middleware('auth');
+
+});
+
+/**
+ * site_admin
+ */

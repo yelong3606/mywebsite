@@ -36,11 +36,25 @@ return [
     */
 
     'guards' => [
+
+        // shop user
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
 
+        // shop admin
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        // site admin
+        'manage' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        
         'api' => [
             'driver' => 'token',
             'provider' => 'users',

@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 /**
  * base controller of all shop app controller
@@ -24,11 +25,13 @@ class Controller extends BaseController
     /**
      * constructor
      * init current shop object, must be called in subclass's constructor
-     * @param \Illuminate\Http\Request $request
      */
-    public function __construct(Request $request)
+    public function __construct()
     {
-        $domain = str_replace(['http://', 'https://'], '', $request->root());
-        $this->shop = \App\Shop::where('shop_domain', $domain)->first() ?: abort(404);
+        if (!app()->runningInConsole()) {
+            $domain = str_replace(['http://', 'https://'], '', request()->root());
+            $this->shop = \App\Shop::where('shop_domain', $domain)->first() ?: abort(404);
+            View::share('shop', $this->shop);
+        }
     }
 }
