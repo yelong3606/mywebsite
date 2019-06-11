@@ -1,21 +1,16 @@
 <?php
-
 namespace App\Http\Controllers\Auth\Manage;
-
-use App\Http\Controllers\Manage\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
 /**
  * Site_Admin Login
  */
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
-
     protected $redirectTo = '/manage/dashboard';
-
     /**
      * Create a new controller instance.
      *
@@ -32,11 +27,9 @@ class LoginController extends Controller
             'user_type' => \App\User::UT_SITE_ADMIN
         );
     }
-
     protected function guard() {
         return Auth::guard('manage');
     }
-
     /**
      * Show the application's login form.
      *
@@ -46,7 +39,6 @@ class LoginController extends Controller
     {
         return view('auth.manage.login')->with('title', 'Login');
     }
-
     /**
      * The user has logged out of the application.
      *
