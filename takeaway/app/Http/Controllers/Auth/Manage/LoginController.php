@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth\Manage;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Manage\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -23,7 +23,6 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        parent::__construct();
         $this->middleware('guest:manage')->except('logout');
     }
             
@@ -35,7 +34,7 @@ class LoginController extends Controller
     }
 
     protected function guard() {
-        return Auth::guard('manage')->with('title', 'Login');
+        return Auth::guard('manage');
     }
 
     /**
@@ -45,7 +44,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.manage.login');
+        return view('auth.manage.login')->with('title', 'Login');
     }
 
     /**

@@ -20,13 +20,12 @@ Route::get('/', function () {
 
 // shop_admin
 Route::namespace('Admin')->group(function() {
-	// Route::get('/admin/login', '');
-	// Route::get('/admin/logout', '');
 	Route::get('/admin/dashboard', 'DashboardController@index')->middleware('auth:admin');
 	Route::get('/admin/orders', 'OrdersController@index')->middleware('auth:admin');
 	// Route::get('/admin/settings', '');
 	Route::resource('/admin/categories', 'CategoriesController')->middleware('auth:admin');
-	// Route::get('/admin/products', 'ProductsController@index');
+	Route::resource('/admin/products', 'ProductsController')->middleware('auth:admin');
+		Route::get('/admin/products/create/{category}', 'ProductsController@create')->middleware('auth:admin');
 });
 
 
@@ -62,3 +61,9 @@ Route::namespace('User')->group(function() {
 /**
  * site_admin
  */
+Route::namespace('Manage')->group(function() {
+	Route::resource('/manage/shops', 'ShopsController')->middleware('auth:manage');
+	// Route::resource('/admin/categories', 'CategoriesController')->middleware('auth:admin');
+	// Route::resource('/admin/products', 'ProductsController')->middleware('auth:admin');
+	// 	Route::get('/admin/products/create/{category}', 'ProductsController@create')->middleware('auth:admin');
+});
