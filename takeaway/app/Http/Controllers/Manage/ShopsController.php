@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Manage;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Shop;
 
@@ -15,6 +16,7 @@ class ShopsController extends Controller
      */
     public function index(Request $request)
     {
+        // search conditions
         $conditions = [];
         if ($request->filled('id')) {
             array_push($conditions, ['id', $request->id]);
@@ -25,6 +27,8 @@ class ShopsController extends Controller
         if ($request->filled('shop_domain')) {
             array_push($conditions, ['shop_domain', 'like', $request->shop_domain . '%']);
         }
+
+        // query
         $shops = Shop::where($conditions)
             ->orderBy('id', 'desc')
             ->paginate(10);

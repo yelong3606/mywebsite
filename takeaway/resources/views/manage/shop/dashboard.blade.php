@@ -12,10 +12,7 @@
                     <li class="breadcrumb-item">
                         <a href="{{ route('manage.dashboard', ['shop' => $shop->id]) }}">Shop #{{$shop->id}}</a>
                     </li>
-                    <li class="breadcrumb-item">
-                        <a href="{{ route($route_prefix . 'categories.index', ['shop' => $shop->id]) }}">Categories</a>
-                    </li>
-                    <li class="breadcrumb-item">Add Category</li>
+                    <li class="breadcrumb-item">Dashboard</li>
                 </ol>
             </nav>
         </div>
@@ -23,8 +20,17 @@
     <div class="col-2">
         @include('shop.info')
     </div>
-    <div class="col-5">
-        @include('shop.categories.create')
+    <div class="col-2">
+        <div class="card">
+            <div class="card-header">Management</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a href="{{ route($route_prefix . 'categories.index', ['shop' => $shop->id]) }}">Categories</a>
+                </li>
+                <li class="list-group-item">Menus</li>
+            </ul>
+        </div>
+        
     </div>
 </div>
 @endsection

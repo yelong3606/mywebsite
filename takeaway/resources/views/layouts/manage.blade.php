@@ -35,7 +35,7 @@
 					<a class="nav-link" href="#">Dashboard</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Shops</a>
+					<a class="nav-link" href="/manage/shops">Shops</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

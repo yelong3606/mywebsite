@@ -1,4 +1,5 @@
-<form action="{{ route($route_prefix . 'update', ['shop' => $shop->id, 'category' => $category->id]) }}" method="POST">
+<form action="{{ route($route_prefix . 'categories.update', ['shop' => $shop->id, 'category' => $category->id]) }}"
+    method="POST">
     @csrf
     @method('PUT')
     <div class="form-group">

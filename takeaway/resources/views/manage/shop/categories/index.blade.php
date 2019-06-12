@@ -6,15 +6,20 @@
         <div class="d-flex justify-content-between align-items-center pt-3 pb-2">
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/manage/shops">Shops</a></li>
-                    <li class="breadcrumb-item"><a href="/manage/shops">Shop #{{$shop->id}}</a></li>
-                    <li class="breadcrumb-item"><a
-                            href="{{ route($route_prefix . 'index', ['shop' => $shop->id]) }}">Categories</a></li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('shops.index') }}">Shops</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('manage.dashboard', ['shop' => $shop->id]) }}">Shop #{{$shop->id}}</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        Categories
+                    </li>
                 </ol>
             </nav>
             <div class="btn-toolbar mb-2">
                 <a class="btn btn-outline-secondary"
-                    href="{{ route($route_prefix . 'create', ['shop' => $shop->id]) }}">Add Category</a>
+                    href="{{ route($route_prefix . 'categories.create', ['shop' => $shop->id]) }}">Add Category</a>
             </div>
         </div>
     </div>

@@ -4,17 +4,16 @@
 <div class="row">
     <div class="col-12">
         <div class="d-flex justify-content-between align-items-center pt-3 pb-2">
-            {{-- <h1 class="h2"><a href="?">Shops</a></h1> --}}
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/manage/shops">Shops</a></li>
                     @if (request()->anyFilled(['id', 'shop_name', 'shop_domain']))
-                        <li class="breadcrumb-item">Search Result</li>
+                    <li class="breadcrumb-item">Search Result</li>
                     @endif
                 </ol>
             </nav>
             <div class="btn-toolbar mb-2">
-                <a class="btn btn-outline-secondary">Add Shop</a>
+                <a class="btn btn-outline-secondary" href="/manage/shops/create">Add Shop</a>
             </div>
         </div>
     </div>
@@ -53,17 +52,33 @@
                     <th>Status</th>
                     <th>Created On</th>
                     <th>Expire On</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($shops as $shop)
-                <tr class="clickable-row" data-href="/manage/shops/{{ $shop->id }}/edit">
+                <tr>
                     <td>{{ $shop->id }}</td>
                     <td>{{ $shop->shop_name }}</td>
                     <td>{{ $shop->shop_domain }}</td>
                     <td>{{ $shop->is_open ? 'On' : 'Off' }}</td>
                     <td>{{ $shop->created_on }}</td>
                     <td>{{ $shop->expire_on }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-secondary btn-sm" href="{{ route('manage.dashboard', ['shop' => $shop->id]) }}">
+                                Manage
+                            </a>
+                            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="">Edit</a>
+                                <a class="dropdown-item" href="">Delete</a>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -74,15 +89,4 @@
         @endif
     </div>
 </div>
-@endsection
-
-@section('scripts')
-<script>
-    $(document).ready(function($) {
-        $(".clickable-row").css('cursor', 'pointer');
-        $(".clickable-row").click(function() {
-            window.location = $(this).data("href");
-        });
-    });
-</script>
 @endsection

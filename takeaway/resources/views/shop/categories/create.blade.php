@@ -1,4 +1,4 @@
-<form action="{{route($route_prefix . 'store', ['shop' => $shop->id])}}" method="POST">
+<form action="{{route($route_prefix . 'categories.store', ['shop' => $shop->id])}}" method="POST">
     @csrf
     <div class="form-group">
         {{ Form::label('category_name', 'Category Name') }}

@@ -12,19 +12,24 @@
     @foreach($categories as $category)
     <tr>
         <td>{{$category->id}}</td>
-        <td><a
-                href="{{ route($route_prefix . 'edit', ['shop' => $shop->id, 'category' => $category->id]) }}">{{$category->category_name}}</a>
-                <small>{!! $category->category_desc !!}</small>
+        <td>
+            <a
+                href="{{ route($route_prefix . 'categories.edit', ['shop' => $shop->id, 'category' => $category->id]) }}">{{$category->category_name}}</a>
+            <small>{!! $category->category_desc !!}</small>
         </td>
         <td>{{$category->category_order}}</td>
         <td>
             <div class="btn-group">
-                <a class="btn btn-outline-secondary btn-sm" href="{{ route($route_prefix . 'edit', ['shop' => $shop->id, 'category' => $category->id]) }}">Edit</a>
+                <a class="btn btn-outline-secondary btn-sm"
+                    href="{{ route($route_prefix . 'categories.edit', ['shop' => $shop->id, 'category' => $category->id]) }}">Edit</a>
 
-                <form action="{{ route($route_prefix . 'destroy', ['shop' => $shop->id, 'category' => $category->id]) }}" method="POST">
+                <form
+                    action="{{ route($route_prefix . 'categories.destroy', ['shop' => $shop->id, 'category' => $category->id]) }}"
+                    method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?');">Delete</button>
+                    <button type="submit" class="btn btn-sm btn-outline-danger"
+                        onclick="return confirm('Are you sure?');">Delete</button>
                 </form>
             </div>
         </td>
