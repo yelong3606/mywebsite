@@ -14,19 +14,19 @@
 /**
  * shop:
  */	
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // shop_admin
-Route::namespace('Admin')->group(function() {
-	Route::get('/admin/dashboard', 'DashboardController@index')->middleware('auth:admin');
-	Route::get('/admin/orders', 'OrdersController@index')->middleware('auth:admin');
-	// Route::get('/admin/settings', '');
-	Route::resource('/admin/categories', 'CategoriesController')->middleware('auth:admin');
-	Route::resource('/admin/products', 'ProductsController')->middleware('auth:admin');
-		Route::get('/admin/products/create/{category}', 'ProductsController@create')->middleware('auth:admin');
-});
+// Route::namespace('Admin')->group(function() {
+// 	Route::get('/admin/dashboard', 'DashboardController@index')->middleware('auth:admin');
+// 	Route::get('/admin/orders', 'OrdersController@index')->middleware('auth:admin');
+// 	// Route::get('/admin/settings', '');
+// 	Route::resource('/admin/categories', 'CategoriesController')->middleware('auth:admin');
+// 	Route::resource('/admin/products', 'ProductsController')->middleware('auth:admin');
+// 		Route::get('/admin/products/create/{category}', 'ProductsController@create')->middleware('auth:admin');
+// });
 
 
 // // customer
@@ -52,18 +52,27 @@ Route::get('/manage/login', 'Auth\Manage\LoginController@showLoginForm')->name('
 Route::post('/manage/login', 'Auth\Manage\LoginController@login');
 Route::post('/manage/logout', 'Auth\Manage\LoginController@logout')->name('manage.logout');
 
-// shop_user
-Route::namespace('User')->group(function() {
-	Route::get('/user/dashboard', 'DashboardController@index')->middleware('auth');
+// // shop_user
+// Route::namespace('User')->group(function() {
+// 	Route::get('/user/dashboard', 'DashboardController@index')->middleware('auth');
 
-});
+// });
 
 /**
  * site_admin
  */
 Route::namespace('Manage')->group(function() {
+	// shops
 	Route::resource('/manage/shops', 'ShopsController')->middleware('auth:manage');
-	// Route::resource('/admin/categories', 'CategoriesController')->middleware('auth:admin');
-	// Route::resource('/admin/products', 'ProductsController')->middleware('auth:admin');
-	// 	Route::get('/admin/products/create/{category}', 'ProductsController@create')->middleware('auth:admin');
+
+	// shop-categories
+	Route::get('/manage/shop/{shop}/categories', 'Shop\CategoriesController@index')->name('manage.categories.index');
+	
+	Route::get('/manage/shop/{shop}/categories/create', 'Shop\CategoriesController@create')->name('manage.categories.create');
+	Route::post('/manage/shop/{shop}/categories', 'Shop\CategoriesController@store')->name('manage.categories.store');
+	
+	Route::get('/manage/shop/{shop}/categories/{category}/edit', 'Shop\CategoriesController@edit')->name('manage.categories.edit');
+	Route::put('/manage/shop/{shop}/categories/{category}', 'Shop\CategoriesController@update')->name('manage.categories.update');
+
+	Route::delete('/manage/shop/{shop}/categories/{categories}/destroy', 'Shop\CategoriesController@destroy')->name('manage.categories.destroy');
 });
