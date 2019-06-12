@@ -6,9 +6,11 @@
         <div class="d-flex justify-content-between align-items-center pt-3 pb-2">
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/manage/shops">Shops</a></li>
                     @if (request()->anyFilled(['id', 'shop_name', 'shop_domain']))
+                    <li class="breadcrumb-item"><a href="/manage/shops">Shops</a></li>
                     <li class="breadcrumb-item">Search Result</li>
+                    @else
+                    <li class="breadcrumb-item">Shops</li>
                     @endif
                 </ol>
             </nav>

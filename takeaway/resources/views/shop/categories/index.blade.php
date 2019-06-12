@@ -12,10 +12,10 @@
     @foreach($categories as $category)
     <tr>
         <td>{{$category->id}}</td>
-        <td>
+        <td class="w-75">
             <a
                 href="{{ route($route_prefix . 'categories.edit', ['shop' => $shop->id, 'category' => $category->id]) }}">{{$category->category_name}}</a>
-            <small>{!! $category->category_desc !!}</small>
+            <small class="description">{!! $category->category_desc !!}</small>
         </td>
         <td>{{$category->category_order}}</td>
         <td>
