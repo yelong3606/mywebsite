@@ -20,7 +20,7 @@
             <div class="btn-toolbar mb-2">
                 <div class="btn-group-toggle mr-1" data-toggle="buttons">
                     <label class="btn btn-primary active">
-                        <input id="toggleDescription" type="checkbox" checked autocomplete="off"> Toggle Detail
+                        <input id="toggleDescription" type="checkbox" checked autocomplete="off"> Toggle Description
                     </label>
                 </div>
                 <a class="btn btn-outline-secondary"

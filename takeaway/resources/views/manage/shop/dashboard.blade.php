@@ -28,7 +28,7 @@
                 </li>
                 <li class="list-group-item">Menus</li>
                 <li class="list-group-item">
-                    <a href="{{ route($route_prefix . 'options.index', ['shop' => $shop->id]) }}">Menus Options</a>
+                    <a href="{{ route($route_prefix . 'options.index', ['shop' => $shop->id]) }}">Menu Options</a>
                 </li>
             </ul>
         </div>

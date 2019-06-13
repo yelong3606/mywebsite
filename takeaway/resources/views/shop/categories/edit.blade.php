@@ -8,7 +8,7 @@
     </div>
     <div class="form-group">
         {{ Form::label('category_desc', 'Category Description') }}
-        {{ Form::textarea('category_desc', $category->category_desc, ['id' => 'summernote', 'class' => 'form-control', 'placeholder' => 'Category Description']) }}
+        {{ Form::textarea('category_desc', $category->category_desc, ['id' => 'summernote', 'class' => 'form-control']) }}
     </div>
     <div class="form-group">
         {{ Form::label('category_order', 'Display Order') }}
