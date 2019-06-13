@@ -70,12 +70,17 @@ Route::namespace('Manage')->group(function() {
 	
 	// shop-categories
 	Route::get('/manage/shop/{shop}/categories', 'Shop\CategoriesController@index')->name('manage.categories.index');
-	
 	Route::get('/manage/shop/{shop}/categories/create', 'Shop\CategoriesController@create')->name('manage.categories.create');
 	Route::post('/manage/shop/{shop}/categories', 'Shop\CategoriesController@store')->name('manage.categories.store');
-	
 	Route::get('/manage/shop/{shop}/categories/{category}/edit', 'Shop\CategoriesController@edit')->name('manage.categories.edit');
 	Route::put('/manage/shop/{shop}/categories/{category}', 'Shop\CategoriesController@update')->name('manage.categories.update');
+	Route::delete('/manage/shop/{shop}/categories/{category}/destroy', 'Shop\CategoriesController@destroy')->name('manage.categories.destroy');
 
-	Route::delete('/manage/shop/{shop}/categories/{categories}/destroy', 'Shop\CategoriesController@destroy')->name('manage.categories.destroy');
+	// shop-product-options
+	Route::get('/manage/shop/{shop}/options', 'Shop\OptionsController@index')->name('manage.options.index');
+	Route::get('/manage/shop/{shop}/options/create', 'Shop\OptionsController@create')->name('manage.options.create');
+	Route::post('/manage/shop/{shop}/options', 'Shop\OptionsController@store')->name('manage.options.store');
+	Route::get('/manage/shop/{shop}/options/{option}/edit', 'Shop\OptionsController@edit')->name('manage.options.edit');
+	Route::put('/manage/shop/{shop}/options/{option}', 'Shop\OptionsController@update')->name('manage.options.update');
+	Route::delete('/manage/shop/{shop}/options/{option}/destroy', 'Shop\OptionsController@destroy')->name('manage.options.destroy');
 });
