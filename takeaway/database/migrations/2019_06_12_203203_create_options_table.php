@@ -19,7 +19,6 @@ class CreateOptionsTable extends Migration
             $table->unsignedBigInteger('shop_id')->index();
             $table->string('option_name');
             $table->text('option_values');
-            $table->enum('option_type', ['main', 'side', 'both'])->default('both');
             
             $table->timestamps();
         });

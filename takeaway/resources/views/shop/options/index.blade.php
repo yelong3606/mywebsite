@@ -5,7 +5,6 @@
             <th>#</th>
             <th>Option Name</th>
             <th>Option Values</th>
-            <th>Option Type</th>
             <th></th>
         </tr>
     </thead>
@@ -20,7 +19,6 @@
                 echo str_replace(["\r\n", "\n", "\r"], '<br />', $option->option_values) ;
             @endphp
         </td>
-        <td>{{$option->option_type}}</td>
         <td>
             <div class="btn-group">
                 <a class="btn btn-outline-secondary btn-sm"

@@ -7,10 +7,6 @@
         {{ Form::text('option_name', $option->option_name, ['class' => 'form-control', 'placeholder' => 'Please enter an unique name for the option']) }}
     </div>
     <div class="form-group">
-        {{ Form::label('option_values', 'Option Values') }}
-        {{ Form::textarea('option_values', $option->option_values, ['class' => 'form-control', 'placeholder' => 'Each value per line']) }}
-    </div>
-    <div class="form-group">
         {{ Form::label('', 'Option Type') }}
         <div class="form-check">
             <input class="form-check-input" type="radio" name="option_type" id="optionType1" value="main" 

@@ -126,7 +126,6 @@ trait Options
         $option->shop_id = $this->shop()->id;
         $option->option_name = $request->input('option_name');
         $option->option_values = $this->filterValue($request->input('option_values'));
-        $option->option_type = $request->input('option_type');
         $option->save();
 
         return redirect($this->route('index'))->with('success', 'Menu Option Created');
@@ -186,7 +185,6 @@ trait Options
         // save
         $option->option_name = $request->input('option_name');
         $option->option_values = $this->filterValue($request->input('option_values'));
-        $option->option_type = $request->input('option_type');
         $option->save();
 
         return redirect($this->route('index'))
