@@ -76,11 +76,19 @@ Route::namespace('Manage')->group(function() {
 	Route::put('/manage/shop/{shop}/categories/{category}', 'Shop\CategoriesController@update')->name('manage.categories.update');
 	Route::delete('/manage/shop/{shop}/categories/{category}/destroy', 'Shop\CategoriesController@destroy')->name('manage.categories.destroy');
 
-	// shop-product-options
+	// shop-menu-options
 	Route::get('/manage/shop/{shop}/options', 'Shop\OptionsController@index')->name('manage.options.index');
 	Route::get('/manage/shop/{shop}/options/create', 'Shop\OptionsController@create')->name('manage.options.create');
 	Route::post('/manage/shop/{shop}/options', 'Shop\OptionsController@store')->name('manage.options.store');
 	Route::get('/manage/shop/{shop}/options/{option}/edit', 'Shop\OptionsController@edit')->name('manage.options.edit');
 	Route::put('/manage/shop/{shop}/options/{option}', 'Shop\OptionsController@update')->name('manage.options.update');
 	Route::delete('/manage/shop/{shop}/options/{option}/destroy', 'Shop\OptionsController@destroy')->name('manage.options.destroy');
+
+	// shop-menus
+	Route::get('/manage/shop/{shop}/menus', 'Shop\MenusController@index')->name('manage.menus.index');
+	Route::get('/manage/shop/{shop}/menus/create', 'Shop\MenusController@create')->name('manage.menus.create');
+	Route::post('/manage/shop/{shop}/menus', 'Shop\MenusController@store')->name('manage.menus.store');
+	Route::get('/manage/shop/{shop}/menus/{option}/edit', 'Shop\MenusController@edit')->name('manage.menus.edit');
+	Route::put('/manage/shop/{shop}/menus/{option}', 'Shop\MenusController@update')->name('manage.menus.update');
+	Route::delete('/manage/shop/{shop}/menus/{option}/destroy', 'Shop\MenusController@destroy')->name('manage.menus.destroy');
 });

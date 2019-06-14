@@ -80,15 +80,16 @@
 				    ['fontsize', ['fontsize']],
 				    ['color', ['color']],
 				    ['para', ['ul', 'ol', 'paragraph']],
-				    // ['height', ['height']]
+					// ['height', ['height']],
+					['view', ['codeview']]
 			  	]
 			});
 		});
 	</script>
-	<script src="https://unpkg.com/feather-icons"></script>
+	{{-- <script src="https://unpkg.com/feather-icons"></script>
 	<script>
 		feather.replace();
-	</script>
+	</script> --}}
 	@yield('scripts')
 </body>
 

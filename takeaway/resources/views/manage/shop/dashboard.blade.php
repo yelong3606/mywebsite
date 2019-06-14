@@ -26,7 +26,9 @@
                 <li class="list-group-item">
                     <a href="{{ route($route_prefix . 'categories.index', ['shop' => $shop->id]) }}">Categories</a>
                 </li>
-                <li class="list-group-item">Menus</li>
+                <li class="list-group-item">
+                    <a href="{{ route($route_prefix . 'menus.index', ['shop' => $shop->id]) }}">Menus</a>
+                </li>
                 <li class="list-group-item">
                     <a href="{{ route($route_prefix . 'options.index', ['shop' => $shop->id]) }}">Menu Options</a>
                 </li>
