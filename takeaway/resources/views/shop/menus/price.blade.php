@@ -5,11 +5,11 @@
     $has_variants = isset($variants) && count($variants) >= 2;
 @endphp
 
-<div class="card">
+<div class="card mb-2">
     <div class="card-header">
         Price
-        <a href="#" class="float-right with-variants @if(!$has_variants) d-none @endif" id="remove-variants">Cancel</a>
-        <a href="#" class="float-right without-variants @if($has_variants) d-none @endif" id="add-variants">Add Variants</a>
+        <a href="#" class="float-right btn btn-sm btn-secondary with-variants @if(!$has_variants) d-none @endif" id="remove-variants">Cancel</a>
+        <a href="#" class="float-right btn btn-sm btn-secondary without-variants @if($has_variants) d-none @endif" id="add-variants">Add Variants</a>
     </div>
     <div class="card-body">
         <div class="form-group without-variants @if($has_variants) d-none @endif">

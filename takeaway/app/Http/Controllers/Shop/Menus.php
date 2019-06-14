@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Shop;
 use Illuminate\Http\Request;
 use App\Menu;
 use App\Category;
+use App\Option;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -97,13 +98,20 @@ trait Menus
     public function create()
     {
         return view($this->template('create'))
-            ->with('categories', $this->categories());
+            ->with('categories', $this->categories())
+            ->with('options', $this->options());
     }
 
     private function categories()
     {
-        return Category::where('shop_id', $this->shop->id)
+        return Category::where('shop_id', $this->shop()->id)
             ->orderBy('category_order', 'asc')
+            ->get();
+    }
+
+    private function options() 
+    {
+        return Option::where('shop_id', $this->shop()->id)
             ->get();
     }
 
@@ -140,6 +148,8 @@ trait Menus
         $menu->title = $request->input('title');
         $menu->description = $request->input('description');
         $menu->category_id = $request->input('category_id') ?: 0;
+
+        // price and variants
         if ($request->input('has_variants')) {
             $menu->price = 0;
 
@@ -167,7 +177,55 @@ trait Menus
             $variants = array();
         }
         $menu->main_option = json_encode($variants);
-        $menu->side_options = json_encode(array());
+
+        // side_options
+        $side_options = array();
+        $raw_side_options = $request->input('side_options');
+        foreach ($raw_side_options as $value) {
+            $side_options[] = $this->filterOption($value);
+        }
+        $menu->side_options = json_encode($side_options);
+    }
+
+    /**
+     * split lines, split name and price from line, remove empty name, remove duplicate name
+     * @param String
+     * @return String
+     */
+    private function filterOption($value)
+    {
+        $option = [];
+
+        // split lines
+        $replace = "<!@#$%>";
+        $value = str_replace(["\r\n", "\n", "\r"], $replace, $value);
+        $lines = explode($replace, $value);
+        foreach ($lines as $line) {
+            // split name and price from line
+            $pattern = '/\( *\+ *\d*\.?\d* *\) *$/';
+            $result = preg_match($pattern, $line, $matches);
+            if ($result === 1) {
+                $name = trim(preg_replace($pattern, '', $line));
+                $price = number_format(trim($matches[0], " (+)"), 2);
+            } else {
+                $name = trim($line);
+                $price = 0.00;
+            }
+
+            // remove empty name
+            if ($name == "") {
+                continue;
+            }
+
+            // remove duplicate name
+            $option[$name] = array(
+                'name' => $name,
+                'price' => $price
+            );
+
+        }
+
+        return array_values($option);
     }
 
     /**
@@ -187,7 +245,8 @@ trait Menus
         
         return view($this->template('edit'))
             ->with('menu', $menu)
-            ->with('categories', $this->categories());
+            ->with('categories', $this->categories())
+            ->with('options', $this->options());
     }
 
     /**

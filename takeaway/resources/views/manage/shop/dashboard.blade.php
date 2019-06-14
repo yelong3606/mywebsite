@@ -10,7 +10,7 @@
                         <a href="{{ route('shops.index') }}">Shops</a>
                     </li>
                     <li class="breadcrumb-item">
-                        Shop #{{$shop->id}} Dashboard
+                        Shop #{{$shop->id}}
                     </li>
                 </ol>
             </nav>

@@ -91,6 +91,7 @@
 		feather.replace();
 	</script> --}}
 	@yield('scripts')
+	@yield('scripts1')
 </body>
 
 </html>

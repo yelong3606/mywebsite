@@ -15,7 +15,7 @@
         <td class="w-75">
             <a
                 href="{{ route($route_prefix . 'categories.edit', ['shop' => $shop->id, 'category' => $category->id]) }}">{{$category->category_name}}</a>
-            <small class="description">{!! $category->category_desc !!}</small>
+            <p><small class="description">{!! $category->category_desc !!}</small></p>
         </td>
         <td>{{$category->category_order}}</td>
         <td>

@@ -10,7 +10,7 @@
                         <a href="{{ route('shops.index') }}">Shops</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="{{ route('manage.dashboard', ['shop' => $shop->id]) }}">Shop #{{$shop->id}} Dashboard</a>
+                        <a href="{{ route('manage.dashboard', ['shop' => $shop->id]) }}">Shop #{{$shop->id}}</a>
                     </li>
                     <li class="breadcrumb-item">
                         Categories
