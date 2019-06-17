@@ -17,7 +17,7 @@ class CreateShopsTable extends Migration
             $table->bigIncrements('id');
          
             $table->string('shop_name');
-            $table->string('shop_logo');
+            $table->string('shop_logo')->null();
             $table->string('shop_domain')->unique();
             $table->boolean('is_open');
             $table->date('created_on');

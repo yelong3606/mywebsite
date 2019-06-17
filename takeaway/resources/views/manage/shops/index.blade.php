@@ -76,8 +76,8 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="">Edit</a>
-                                <a class="dropdown-item" href="">Delete</a>
+                                <a class="dropdown-item" href="{{route('shops.edit', ['shop' => $shop->id])}}">Edit</a>
+                                <a class="dropdown-item" href="#" onclick="alert('todo');return false;">Delete</a>
                             </div>
                         </div>
                     </td>
