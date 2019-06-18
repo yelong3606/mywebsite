@@ -170,8 +170,10 @@ trait Options
             'option_name' => [
                 'required',
 
-                // must unique
-                Rule::unique('options')->ignore($option->id)
+                // must unique within shop
+                Rule::unique('options')->where(function($query) {
+                    return $query->where('shop_id', $this->shop()->id);
+                })->ignore($option->id)
             ],
             'option_values' => 'required',
         ]);

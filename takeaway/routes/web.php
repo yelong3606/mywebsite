@@ -64,6 +64,8 @@ Route::post('/manage/logout', 'Auth\Manage\LoginController@logout')->name('manag
 Route::namespace('Manage')->group(function() {
 	// shops
 	Route::resource('/manage/shops', 'ShopsController')->middleware('auth:manage');
+	// regions
+	Route::resource('/manage/regions', 'RegionsController')->middleware('auth:manage');
 
 	// shop-dashboard
 	Route::get('/manage/shop/{shop}/dashboard', 'Shop\DashboardController@index')->name('manage.dashboard');

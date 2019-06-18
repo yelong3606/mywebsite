@@ -26,16 +26,16 @@
                 <form action="/manage/shops">
                     <div class="form-group">
                         <label for="searchID"><small>Shop ID</small></label>
-                        <input type="text" name="id" id="searchID" class="form-control-sm" value="{{request()->id}}">
+                        <input type="text" name="id" id="searchID" class="form-control form-control-sm" value="{{request()->id}}">
                     </div>
                     <div class="form-group">
                         <label for="searchShopName"><small>Shop Name</small></label>
-                        <input type="text" name="shop_name" id="searchShopName" class="form-control-sm"
+                        <input type="text" name="shop_name" id="searchShopName" class="form-control form-control-sm"
                             value="{{request()->shop_name}}">
                     </div>
                     <div class="form-group">
                         <label for="searchShopDomain"><small>Shop Domain</small></label>
-                        <input type="text" name="shop_domain" id="searchShopDomain" class="form-control-sm"
+                        <input type="text" name="shop_domain" id="searchShopDomain" class="form-control form-control-sm"
                             value="{{request()->shop_domain}}">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -85,7 +85,11 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $shops->links() }}
+        {{ $shops->appends([
+            'id' => request()->id,
+            'shop_name' => request()->shop_name,
+            'shop_domain' => request()->shop_domain
+        ])->links() }}
         @else
         <p>No Shops Found</p>
         @endif

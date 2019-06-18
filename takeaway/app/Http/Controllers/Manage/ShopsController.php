@@ -24,10 +24,10 @@ class ShopsController extends Controller
             array_push($conditions, ['id', $request->id]);
         }
         if ($request->filled('shop_name')) {
-            array_push($conditions, ['shop_name', 'like', $request->shop_name . '%']);
+            array_push($conditions, ['shop_name', 'like', '%' . $request->shop_name . '%']);
         }
         if ($request->filled('shop_domain')) {
-            array_push($conditions, ['shop_domain', 'like', $request->shop_domain . '%']);
+            array_push($conditions, ['shop_domain', 'like', '%' . $request->shop_domain . '%']);
         }
 
         // query
@@ -115,7 +115,7 @@ class ShopsController extends Controller
     {
         $shop = Shop::find($id);
         if (is_null($shop)) {
-            return redirect(route('shop.index'))
+            return redirect(route('shops.index'))
                 ->with('error', 'Shop(' . $id . ') Not Found');
         }
         
@@ -133,7 +133,7 @@ class ShopsController extends Controller
     {
         $shop = Shop::find($id);
         if (is_null($shop)) {
-            return redirect(route('shop.index'))
+            return redirect(route('shops.index'))
                 ->with('error', 'Shop(' . $id . ') Not Found');
         }
 

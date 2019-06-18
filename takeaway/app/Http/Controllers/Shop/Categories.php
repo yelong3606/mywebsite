@@ -154,8 +154,10 @@ trait Categories
             'category_name' => [
                 'required',
 
-                // must unique
-                Rule::unique('categories')->ignore($category->id)
+                // must unique within shop
+                Rule::unique('categories')->where(function($query) {
+                    return $query->where('shop_id', $this->shop()->id);
+                })->ignore($category->id)
             ],
             'category_order' => 'integer',
         ]);
