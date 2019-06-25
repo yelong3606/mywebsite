@@ -56,13 +56,16 @@ class ShopsController extends Controller
     public function store(Request $request)
     {
         // input validate
-        $validator = Validator::make([
-            'shop_name' => $request->shop_name,
-            'shop_domain' => $this->filter_domain($request->shop_domain),
-        ], [
-            'shop_name' => 'required',
-            'shop_domain' => 'required|unique:shops',
+        $validator = Validator::make($request->all(), [
+            'shop_name' => array(
+                'required',
+                'alpha_dash',
+                'unique:shops'
+            ),
         ]);
+        $validator->sometimes('shop_domain', 'unique:shops', function($input) {
+            return !empty($input->shop_domain);
+        });
 
         if ($validator->fails()) {
             return redirect(route('shops.create'))
@@ -72,26 +75,21 @@ class ShopsController extends Controller
 
         $shop = new Shop();
         $shop->shop_name = $request->input('shop_name');
-        $shop->shop_domain = $this->filter_domain($request->input('shop_domain'));
-        if ($request->hasFile('shop_logo') && $request->file('shop_logo')->isValid()) {
-            $shop->shop_logo = $request->shop_logo->path();
+        $shop_domain = $request->input('shop_domain');
+        if ($shop_domain == '') {
+            $shop->shop_domain = $shop->shop_name . '.' . config('app.domain');
+        } else {
+            $shop->shop_domain = $shop_domain;
         }
+        // if ($request->hasFile('shop_logo') && $request->file('shop_logo')->isValid()) {
+        //     $shop->shop_logo = $request->shop_logo->path();
+        // }
         $shop->is_open = $request->input('is_open');
         $shop->created_on = $request->input('created_on');
         $shop->expire_on = $request->input('expire_on');
         $shop->save();
 
         return redirect(route('shops.index'))->with('success', 'Shop Created');
-    }
-
-    private function filter_domain($domain)
-    {
-        $app_domain = config('app.domain');
-        if (strpos($domain, '.') > -1 || substr($domain, -1 * strlen($app_domain)) == $app_domain) {
-            return $domain;
-        } else {
-            return $domain . '.' . $app_domain;
-        }
     }
 
     /**
@@ -138,11 +136,12 @@ class ShopsController extends Controller
         }
 
         // input validate
-        $validator = Validator::make([
-            'shop_name' => $request->shop_name,
-            'shop_domain' => $this->filter_domain($request->shop_domain),
-        ], [
-            'shop_name' => 'required',
+        $validator = Validator::make($request->all(), [
+            'shop_name' => [
+                'required',
+                'alpha_dash',
+                Rule::unique('shops')->ignore($shop->id),
+            ],
             'shop_domain' => [
                 'required',
                 Rule::unique('shops')->ignore($shop->id),
@@ -156,10 +155,7 @@ class ShopsController extends Controller
         }
 
         $shop->shop_name = $request->input('shop_name');
-        $shop->shop_domain = $this->filter_domain($request->input('shop_domain'));
-        if ($request->hasFile('shop_logo') && $request->file('shop_logo')->isValid()) {
-            $shop->shop_logo = $request->shop_logo->path();
-        }
+        $shop->shop_domain = $request->input('shop_domain');
         $shop->is_open = $request->input('is_open');
         // $shop->created_on = $request->input('created_on');
         $shop->expire_on = $request->input('expire_on');
@@ -176,6 +172,15 @@ class ShopsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $shop = Shop::find($id);
+        if (is_null($shop)) {
+            return redirect(route('shops.index'))
+                ->with('error', 'Shop(' . $id . ') Not Found');
+        }
+
+        // todo: relation to shops
+        $shop->delete();
+        return redirect(route('shops.index'))
+            ->with('success', 'Shop Removed');
     }
 }

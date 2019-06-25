@@ -3,15 +3,11 @@
         <div class="card-body">
             <div class="form-group">
                 {{ Form::label('shop_name', 'Shop Name') }}
-                {{ Form::text('shop_name', isset($shop) ? $shop->shop_name : '', ['class' => 'form-control']) }}
+                {{ Form::text('shop_name', isset($shop) ? $shop->shop_name : '', ['class' => 'form-control', 'placeholder' => 'may only contain letters, numbers, dashes and underscores']) }}
             </div>
             <div class="form-group">
-                {{ Form::label('shop_domain', 'Shop Domain') }}
-                {{ Form::text('shop_domain', isset($shop) ? $shop->shop_domain : '', ['class' => 'form-control', 'placeholder' => 'Subdomain like "bangkook" or domain like "www.abc.com"']) }}
-            </div>
-            <div class="form-group">
-                {{ Form::label('shop_logo', 'Shop Logo') }}
-                {{ Form::file('shop_logo', ['class' => 'form-control']) }}
+                {{ Form::label('shop_domain', 'Shop Domain(Optional)') }}
+                {{ Form::text('shop_domain', isset($shop) ? $shop->shop_domain : '', ['class' => 'form-control', 'placeholder' => 'only for independent domain']) }}
             </div>
         </div>
     </div>
