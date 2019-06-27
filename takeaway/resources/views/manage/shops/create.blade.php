@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<form action="{{route('shops.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('shops.store')}}" method="POST">
     <div class="row">
         @csrf
         @include('manage.shops.content')

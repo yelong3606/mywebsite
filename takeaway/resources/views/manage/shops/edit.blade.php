@@ -15,7 +15,7 @@
         </div>
     </div>
 </div>
-<form action="{{route('shops.update', ['shop' => $shop->id])}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('shops.update', ['shop' => $shop->id])}}" method="POST">
     <div class="row">
         @csrf
         @method('PUT')
