@@ -32,6 +32,12 @@
                 <li class="list-group-item">
                     <a href="{{ route($route_prefix . 'options.index', ['shop' => $shop->id]) }}">Menu Options</a>
                 </li>
+                <li class="list-group-item">
+                    <a href="{{ route($route_prefix . 'settings.edit', ['shop' => $shop->id]) }}">Settings</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route($route_prefix . 'deliveries.index', ['shop' => $shop->id]) }}">Delivery Areas</a>
+                </li>
             </ul>
         </div>
         

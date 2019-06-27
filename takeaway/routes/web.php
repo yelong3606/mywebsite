@@ -93,4 +93,16 @@ Route::namespace('Manage')->group(function() {
 	Route::get('/manage/shop/{shop}/menus/{option}/edit', 'Shop\MenusController@edit')->name('manage.menus.edit');
 	Route::put('/manage/shop/{shop}/menus/{option}', 'Shop\MenusController@update')->name('manage.menus.update');
 	Route::delete('/manage/shop/{shop}/menus/{option}/destroy', 'Shop\MenusController@destroy')->name('manage.menus.destroy');
+
+	// shop-settings
+	Route::get('/manage/shop/{shop}/settings/edit', 'Shop\SettingsController@edit')->name('manage.settings.edit');
+	Route::put('/manage/shop/{shop}/settings', 'Shop\SettingsController@update')->name('manage.settings.update');
+
+	// shop-deliveries
+	Route::get('/manage/shop/{shop}/deliveries', 'Shop\DeliveriesController@index')->name('manage.deliveries.index');
+	Route::get('/manage/shop/{shop}/deliveries/create', 'Shop\DeliveriesController@create')->name('manage.deliveries.create');
+	Route::post('/manage/shop/{shop}/deliveries', 'Shop\DeliveriesController@store')->name('manage.deliveries.store');
+	Route::get('/manage/shop/{shop}/deliveries/{delivery}/edit', 'Shop\DeliveriesController@edit')->name('manage.deliveries.edit');
+	Route::put('/manage/shop/{shop}/deliveries/{delivery}', 'Shop\DeliveriesController@update')->name('manage.deliveries.update');
+	Route::delete('/manage/shop/{shop}/deliveries/{delivery}/destroy', 'Shop\DeliveriesController@destroy')->name('manage.deliveries.destroy');
 });

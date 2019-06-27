@@ -70,6 +70,7 @@
 	<!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}"></script>
 	<script src="{{ asset('js/summernote-bs4.min.js') }}"></script>
+	<script src="{{ asset('js/autocomplete.js') }}"></script>
 	<script>
 		$(document).ready(function() {
 		  	$('#summernote').summernote({
