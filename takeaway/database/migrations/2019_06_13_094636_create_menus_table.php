@@ -19,7 +19,7 @@ class CreateMenusTable extends Migration
             $table->unsignedBigInteger('shop_id')->index();
             $table->unsignedBigInteger('category_id')->default(0);
             $table->string('title');
-            $table->text('description')->null();
+            $table->text('description')->nullable();
             $table->unsignedTinyInteger('menu_order')->default(0);
             $table->decimal('price', 8, 2);
             $table->text('main_option'); // option is array of {name, price}

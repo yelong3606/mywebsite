@@ -16,12 +16,23 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->bigIncrements('id');
          
-            $table->string('shop_name');
-            $table->string('shop_logo')->null();
-            $table->string('shop_domain')->unique();
-            $table->boolean('is_open');
-            $table->date('created_on');
+            // create and edit shop
+            $table->string('shop_name')->unique(); // subdomain
+            $table->string('shop_domain')->unique(); // full domain, hide when create
+            $table->boolean('is_open'); // hide when create
+            $table->date('created_on'); // hide when create
             $table->date('expire_on');
+
+            // shop settings
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('shop_logo')->nullable();
+            $table->string('addr_1')->nullable();
+            $table->string('addr_2')->nullable();
+            $table->string('addr_3')->nullable();
+            $table->string('addr_town')->nullable();
+            $table->text('opening_hours')->nullable(); // array of {date,from,to}
+            $table->text('delivery_areas')->nullable();
          
             $table->timestamps();
         });
