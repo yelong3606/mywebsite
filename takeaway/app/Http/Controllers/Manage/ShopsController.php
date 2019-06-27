@@ -81,9 +81,7 @@ class ShopsController extends Controller
         } else {
             $shop->shop_domain = $shop_domain;
         }
-        // if ($request->hasFile('shop_logo') && $request->file('shop_logo')->isValid()) {
-        //     $shop->shop_logo = $request->shop_logo->path();
-        // }
+
         $shop->is_open = $request->input('is_open');
         $shop->created_on = $request->input('created_on');
         $shop->expire_on = $request->input('expire_on');
