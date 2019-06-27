@@ -2,7 +2,7 @@
 
 if (!function_exists('lines_explode')) {
     /**
-     * explode by \r\n
+     * explode by \r\n, \n or \r
      * @param string $lines
      * @return array
      */
