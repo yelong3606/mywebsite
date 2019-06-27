@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -23,7 +23,6 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        parent::__construct();
         $this->middleware('guest:admin')->except('logout');
     }
 

@@ -17,6 +17,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
+        // echo json_encode([['item' => '10 Pieces', 'base_price' => 5.5], ['item' => '20 Pieces', 'base_price' => 9.5]]);exit;
         $categories = Category::where('shop_id', $this->shop->id)
             ->orderBy('category_order', 'asc')
             ->get();

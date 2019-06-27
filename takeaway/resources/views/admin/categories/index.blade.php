@@ -16,7 +16,7 @@
 				</thead>
 				@foreach($categories as $category)
 				<tr>
-					<td><a href="/admin/categories/{{$category->id}}">{{{$category->category_name}}}</a></td>
+					<td><a href="/admin/categories/{{$category->id}}">{{$category->category_name}}</a></td>
 					<td>{{$category->category_order}}</td>
 				</tr>
 				@endforeach
