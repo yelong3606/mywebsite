@@ -1,7 +1,7 @@
 @foreach($menus as $category_id => $cate_menus)
 <div class="card mb-2" id="category{{$category_id}}">
     <div class="card-body">
-    <div class="card-title">{{$categories[$category_id]}}</div>
+    <div class="card-title">{!!$categories[$category_id]!!}</div>
     <table class="table table-bordered table-striped table-sm">
         @foreach ($cate_menus as $menu)
         @php
@@ -11,16 +11,16 @@
         <tr>
             <td class="col-8">
                 <a
-                    href="{{ route($route_prefix . 'menus.edit', ['shop' => $shop->id, 'menu' => $menu->id]) }}">{{$menu->title}}
+                    href="{{ route($route_prefix . 'menus.edit', ['shop' => $shop->id, 'menu' => $menu->id]) }}">{!!$menu->title!!}
                 </a>
                 @if (!$has_variants)
                     <span class="float-right">€{{$menu->price}}</span>
                 @endif
-                <p class="description" style="display:none"><small>{{$menu->description}}</small></p>
+                {{-- <p class="description" style="display:none"><small>{!!$menu->description!!}</small></p> --}}
                 @if ($has_variants)
                     @foreach ($variants as $variant)
                         <p>
-                            <strong>{{$variant->name}}</strong>
+                            <strong>{!!$variant->name!!}</strong>
                             <span class="float-right">€{{$variant->price}}</span>
                         </p>
                     @endforeach

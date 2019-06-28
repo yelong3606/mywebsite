@@ -67,13 +67,12 @@ trait Menus
         foreach ($categories as $category) {
             $indexedCategories[$category->id] = $category->category_name;
         }
-
         $menus = Menu::where('shop_id', $this->shop()->id)
             ->orderBy('menu_order', 'asc')
             ->get();
         $indexedMenus = array();
         foreach ($menus as $menu) {
-            if (isset($categories[$menu->category_id])) {
+            if (isset($indexedCategories[$menu->category_id])) {
                 $indexedMenus[$menu->category_id][] = $menu;
             } else {
                 // not belong to any category

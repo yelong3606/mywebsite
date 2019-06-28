@@ -18,11 +18,11 @@
                 </ol>
             </nav>
             <div class="btn-toolbar mb-2">
-                <div class="btn-group-toggle mr-1" data-toggle="buttons">
+                {{-- <div class="btn-group-toggle mr-1" data-toggle="buttons">
                     <label class="btn btn-primary active">
                         <input id="toggleDescription" type="checkbox" checked autocomplete="off"> Toggle Description
                     </label>
-                </div>
+                </div> --}}
                 <a class="btn btn-outline-secondary"
                     href="{{ route($route_prefix . 'categories.create', ['shop' => $shop->id]) }}">Add Category</a>
             </div>

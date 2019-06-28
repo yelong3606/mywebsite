@@ -62,6 +62,8 @@ Route::post('/manage/logout', 'Auth\Manage\LoginController@logout')->name('manag
  * site_admin
  */
 Route::namespace('Manage')->group(function() {
+	// test
+	Route::get('/manage/my', 'MyController@index')->middleware('auth:manage');
 	// shops
 	Route::resource('/manage/shops', 'ShopsController')->middleware('auth:manage');
 	// regions
