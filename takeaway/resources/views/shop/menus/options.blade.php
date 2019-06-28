@@ -26,8 +26,15 @@
             <li class="list-group-item">
                 option {{$loop->index + 1}} 
                 <a href="#" onclick="return removeOption(this);" class="btn btn-sm btn-secondary float-right">[-]</a>
-                <textarea name="side_options[]" class="form-control">@foreach ($side_option as $item){{$item->name}}({{$item->price}})
-@endforeach</textarea>
+                <textarea name="side_options[]" class="form-control" rows="10"><?php
+                    foreach ($side_option as $item) {
+                        echo $item->name;
+                        if ($item->price > 0) {
+                            echo "(+" . $item->price . ")";
+                        }
+                        echo "\r\n";
+                    }
+                    ?></textarea>
             </li>
             @endforeach
         </ul>

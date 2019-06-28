@@ -30,7 +30,7 @@ $category_id = isset($menu) ? $menu->category_id : 0;
                     <select name="category_id" id="category_id" class="form-control" size="20">
                         @foreach ($categories as $category)
                         <option value="{{$category->id}}" @if ($category->id == $category_id) selected
-                            @endif>{{$category->category_name}}</option>
+                            @endif>{!!$category->category_name!!}</option>
                         @endforeach
                     </select>
                 </div>
