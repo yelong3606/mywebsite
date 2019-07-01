@@ -1,16 +1,16 @@
 <?php
-namespace App\Http\Controllers\Auth\Manage;
+namespace App\Http\Controllers\Auth\Site;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 /**
- * Site_Admin Login
+ * Site Admin Login
  */
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
-    protected $redirectTo = '/manage/dashboard';
+    protected $redirectTo = '/admin';
     /**
      * Create a new controller instance.
      *
@@ -18,7 +18,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:manage')->except('logout');
+        $this->middleware('guest:site')->except('logout');
     }
             
     protected function credentials(Request $request)
@@ -28,7 +28,7 @@ class LoginController extends Controller
         );
     }
     protected function guard() {
-        return Auth::guard('manage');
+        return Auth::guard('site');
     }
     /**
      * Show the application's login form.
@@ -37,7 +37,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.manage.login')->with('title', 'Login');
+        return view('auth.site.login')->with('title', 'Login');
     }
     /**
      * The user has logged out of the application.
@@ -47,6 +47,6 @@ class LoginController extends Controller
      */
     protected function loggedOut(Request $request)
     {
-        return redirect(route('manage.login'));
+        return redirect(route('site.login'));
     }
 }

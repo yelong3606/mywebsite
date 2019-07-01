@@ -16,7 +16,7 @@
 
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/manage.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/siteadmin.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/summernote-bs4.css') }}" rel="stylesheet">
 </head>
 
@@ -32,10 +32,10 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Dashboard</a>
+					<a class="nav-link" href="/admin">Dashboard</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/manage/shops">Shops</a>
+					<a class="nav-link" href="/admin/shops">Shops</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -43,7 +43,7 @@
 						Dropdown
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="/manage/regions">Regions</a>
+						<a class="dropdown-item" href="/admin/regions">Regions</a>
 						<a class="dropdown-item" href="#">Another action</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">Something else here</a>
@@ -54,7 +54,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ route('logout') }}"
 					onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-					<form id="logout-form" action="{{ route('manage.logout') }}" method="POST" style="display: none;">
+					<form id="logout-form" action="{{ route('site.logout') }}" method="POST" style="display: none;">
 						@csrf
 					</form>
 				</li>

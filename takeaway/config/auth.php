@@ -37,20 +37,20 @@ return [
 
     'guards' => [
 
-        // shop user
+        // user
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
 
         // shop admin
-        'admin' => [
+        'shop' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
 
         // site admin
-        'manage' => [
+        'site' => [
             'driver' => 'session',
             'provider' => 'users',
         ],

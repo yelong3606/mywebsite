@@ -21,7 +21,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/user/dashboard';
+    protected $redirectTo = '/user';
             
     /**
      * Create a new controller instance.
@@ -30,7 +30,6 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        // parent::__construct();
         $this->middleware('guest')->except('logout');
     }
 

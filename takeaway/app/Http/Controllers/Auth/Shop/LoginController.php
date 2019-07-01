@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Auth\Admin;
+namespace App\Http\Controllers\Auth\Shop;
 
-use App\Http\Controllers\Admin\Controller;
+use App\Http\Controllers\Shop\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 /**
- * Shop_Admin Login
+ * Shop Admin Login
  */
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/admin/dashboard';
+    protected $redirectTo = '/admin';
             
     /**
      * Create a new controller instance.
@@ -23,7 +23,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:shop')->except('logout');
     }
 
     protected function credentials(Request $request)
@@ -35,7 +35,7 @@ class LoginController extends Controller
     }
 
     protected function guard() {
-        return Auth::guard('admin');
+        return Auth::guard('shop');
     }
 
     /**
@@ -45,7 +45,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.admin.login')->with('title', 'Login');
+        return view('auth.shop.login')->with('title', 'Login');
     }
 
     /**
@@ -56,6 +56,6 @@ class LoginController extends Controller
      */
     protected function loggedOut(Request $request)
     {
-        return redirect(route('admin.login'));
+        return redirect(route('shop.login'));
     }
 }

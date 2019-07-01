@@ -22,13 +22,13 @@ class Authenticate extends Middleware
 
     private function redirectToShop($request) {
         if (! $request->expectsJson()) {
-            return route('admin.login');
+            return route('shop.login');
         }
     }
 
     private function redirectToSite($request) {
         if (! $request->expectsJson()) {
-            return route('manage.login');
+            return route('site.login');
         }
     }
 
@@ -53,11 +53,11 @@ class Authenticate extends Middleware
             }
         }
 
-        if (in_array('admin', $guards)) {
+        if (in_array('shop', $guards)) {
             throw new AuthenticationException(
                 'Unauthenticated.', $guards, $this->redirectToShop($request)
             );
-        } elseif (in_array('manage', $guards)) {
+        } elseif (in_array('site', $guards)) {
             throw new AuthenticationException(
                 'Unauthenticated.', $guards, $this->redirectToSite($request)
             );

@@ -18,12 +18,12 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            if ($guard == 'admin') {
-                return redirect('/admin/dashboard');
-            } elseif ($guard == 'manage') {
-                return redirect('/manage/dashboard');
+            if ($guard == 'shop') {
+                return redirect('/admin');
+            } elseif ($guard == 'site') {
+                return redirect('/admin');
             } else {
-                return redirect('/user/dashboard');
+                return redirect('/user');
             }
         }
 

@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/user/dashboard';
+    protected $redirectTo = '/user';
 
     /**
      * Create a new controller instance.
@@ -38,7 +38,6 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        // parent::__construct();
         $this->middleware('guest');
     }
 
@@ -55,9 +54,9 @@ class RegisterController extends Controller
             'email' => [
                 'required', 'string', 'email', 'max:191', 
 
-                // unique within shop
+                // unique
                 Rule::unique('users')->where(function($query) {
-                    return $query->where('shop_id', $this->shop->id);
+                    return $query->where('user_type', App\User::UT_SHOP_USER);
                 })
             ],
             'password' => ['required', 'string', 'min:8', 'max:191', 'confirmed'],
@@ -77,7 +76,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'user_type' => User::UT_SHOP_USER,
-            'shop_id' => $this->shop->id,
+            'shop_id' => $this->shop->id, // registered from 
         ]);
     }
 }
