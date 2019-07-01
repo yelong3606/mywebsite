@@ -62,6 +62,11 @@ Route::domain('www.yelin.com')->group(function() {
 // homepage
 Route::get('/', 'Shop\HomeController@index');
 
+// admin dashboard
+Route::get('/admin', function(){
+	return "dashboard";
+})->middleware('auth:shop');
+
 // admin (here use shopcategories to ignore same route name as in site/shopadmin)
 Route::resource('/admin/shopcategories', 'Shop\Admin\CategoriesController');
 

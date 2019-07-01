@@ -24,6 +24,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest:shop')->except('logout');
+        parent::__construct();
     }
 
     protected function credentials(Request $request)

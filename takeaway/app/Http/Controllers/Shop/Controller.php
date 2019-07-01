@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as BaseController;
+use Illuminate\Support\Facades\View;
 
 class Controller extends BaseController
 {
@@ -19,11 +20,9 @@ class Controller extends BaseController
     {
         if (!app()->runningInConsole()) {
             // init shop instance
-            
-            // $id = $router->input('shop');
-            // $this->shop = \App\Shop::find($id) ?: abort(403, 'Shop #' . $id . ' Not Exist!');
-            // View::share('shop', $this->shop);
+            $domain = parse_url(url()->current(), PHP_URL_HOST);
+            $this->shop = \App\Shop::where('shop_domain', $domain)->first() ?: abort(404);
+            View::share('shop', $this->shop);
         }
-    
     }
 }
