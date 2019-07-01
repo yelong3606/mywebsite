@@ -36,7 +36,7 @@ Route::domain('www.yelin.com')->group(function() {
 	Route::post('/admin/logout', 'Auth\Site\LoginController@logout')->name('site.logout');
 
 	// shopadmin:dashboard
-	Route::get('/shop{shop}/dashboard', 'Site\Shopadmin\DashboardController@index')->name('site.dashboard');
+	Route::get('/shop{shop}', 'Site\Shopadmin\DashboardController@index')->name('site.dashboard');
 	
 	// shopadmin:category
 	Route::resource('/shop{shop}/categories', 'Site\Shopadmin\CategoriesController');
