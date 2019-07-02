@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controller\Shop\Admin;
+namespace App\Http\Controllers\Shop\Admin;
 
-use App\Http\Controller\Shop\Controller as BaseController;
+use App\Http\Controllers\Shop\Controller as BaseController;
 
 class Controller extends BaseController
 {
