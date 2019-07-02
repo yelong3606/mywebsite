@@ -45,6 +45,11 @@
                                     value="{{$shop->addr_town}}" class="form-control" placeholder="e.g. Clonsilla">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="">Phone Number</label>
+                            <input type="text" name="phone" value="{{$shop->phone}}" class="form-control"
+                                placeholder="">
+                        </div>
                     </div>
                 </div>
             </div>

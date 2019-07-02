@@ -31,6 +31,7 @@ class CreateShopsTable extends Migration
             $table->string('addr_2')->nullable();
             $table->string('addr_3')->nullable();
             $table->string('addr_town')->nullable();
+            $table->string('phone')->nullable();
             $table->text('opening_hours')->nullable(); // array of {date,from,to}
          
             $table->timestamps();

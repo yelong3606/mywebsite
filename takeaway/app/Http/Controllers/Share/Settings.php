@@ -74,6 +74,7 @@ trait Settings
         $shop->addr_2 = $request->input('addr_2');
         $shop->addr_3 = $request->input('addr_3');
         $shop->addr_town = $request->input('addr_town');
+        $shop->phone = $request->input('phone');
 
         $shop->opening_hours = $this->str2openinghours($request->input('opening'));
         $shop->save();
