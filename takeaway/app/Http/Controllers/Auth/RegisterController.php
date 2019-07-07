@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use App\Http\Controllers\Shop\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -39,7 +39,6 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        parent::__construct();
     }
 
     /**
@@ -59,7 +58,6 @@ class RegisterController extends Controller
                 Rule::unique('users')->where(function($query) {
                     return $query->where([
                         ['user_type', \App\User::UT_SHOP_USER],
-                        ['shop_id', $this->shop->id]
                     ]);
                 })
             ],
@@ -80,7 +78,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'user_type' => User::UT_SHOP_USER,
-            'shop_id' => $this->shop->id, 
+            'shop_id' => 0, 
         ]);
     }
 }
