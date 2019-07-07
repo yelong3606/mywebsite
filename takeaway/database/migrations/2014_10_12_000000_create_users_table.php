@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
 
             // three type of user, using same login controller
             $table->enum('user_type', ['shop_user', 'shop_admin', 'site_admin'])->default('shop_user');
+
+            // only valid for shop_admin, others keep 0
             $table->unsignedBigInteger('shop_id')->index();
         });
     }

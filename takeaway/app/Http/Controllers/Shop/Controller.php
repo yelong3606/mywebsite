@@ -25,4 +25,9 @@ class Controller extends BaseController
             View::share('shop', $this->shop);
         }
     }
+
+    protected function shop()
+    {
+        return $this->shop;
+    }
 }

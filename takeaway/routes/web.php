@@ -61,6 +61,9 @@ Route::domain('www.yelin.com')->group(function() {
  */
 // homepage
 Route::get('/', 'Shop\HomeController@index');
+Route::post('/addtocart', 'Shop\HomeController@addtocart');
+Route::post('/removefromcart', 'Shop\HomeController@removefromcart');
+Route::get('/addtocart', 'Shop\HomeController@addtocart');
 
 // admin dashboard
 Route::get('/admin', function(){
@@ -70,14 +73,12 @@ Route::get('/admin', function(){
 // admin (here use shopcategories to ignore same route name as in site/shopadmin)
 Route::resource('/admin/shopcategories', 'Shop\Admin\CategoriesController');
 
-// // customer
-// Route::get('/customer/login', '');
-// Route::get('/customer/register', '');
-// Route::get('/customer/account', 'Customer\AccountController@index');
-// Route::get('/customer/orders', 'Customer\OrdersController@index');
-// Route::get('/customer/credit', '');
-// Route::get('/customer/payment', '');
-// Route::get('/customer/addresses', 'Customer\AddressesController@index');
+// user
+// Route::get('/user/account', 'user\AccountController@index');
+// Route::get('/user/orders', 'user\OrdersController@index');
+// Route::get('/user/credit', '');
+// Route::get('/user/payment', '');
+Route::get('/user/addresses', 'Shop\UserController@addresses');
 
 // // flow
 // Route::get('/flow/shop', '');
@@ -88,6 +89,14 @@ Auth::routes();
 Route::get('/admin/login', 'Auth\Shop\LoginController@showLoginForm')->name('shop.login');
 Route::post('/admin/login', 'Auth\Shop\LoginController@login');
 Route::post('/admin/logout', 'Auth\Shop\LoginController@logout')->name('shop.logout');
+
+// login with google
+Route::get('/login/google', 'Auth\LoginController@redirectToGoogle');
+Route::get('/login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
+// login with facebook
+Route::get('/login/facebook', 'Auth\LoginController@redirectToFacebook');
+Route::get('/login/facebook/callback', 'Auth\LoginController@handleFacebookCallback');
 
 
 

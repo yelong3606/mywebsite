@@ -19,14 +19,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/shop.css') }}" rel="stylesheet">
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{-- <img src="{{asset('storage/' . $shop->shop_logo)}}" alt="{{ $shop->title }}" height=""> --}}
+                    <img src="{{asset('storage/' . $shop->shop_logo)}}" alt="{{ $shop->title }}" height="50">
                     {{ $shop->title }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -80,10 +81,18 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main role="main">
             @yield('content')
         </main>
     </div>
+    <!-- Scripts -->
+	<script src="{{ asset('js/app.js') }}"></script>
+	<script src="{{ asset('js/autocomplete.js') }}"></script>
+	{{-- <script src="https://unpkg.com/feather-icons"></script>
+	<script>
+		feather.replace();
+	</script> --}}
+	@yield('scripts')
+	@yield('scripts1')
 </body>
-
 </html>
